@@ -3,6 +3,7 @@ import Rook from './Rook';
 import Row from './Row';
 import { connect } from 'react-redux';
 
+//@ts-check
 class Board extends React.Component {
   state = {
     name: 'x',
@@ -14,7 +15,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div style={style}>
+      <div style={this.style}>
         <Row startSquare="white" />
         <Row startSquare="black" />
         <Row startSquare="white" />
