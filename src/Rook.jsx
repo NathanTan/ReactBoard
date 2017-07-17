@@ -10,7 +10,7 @@ let Rook = () => {
 
   return (
     <div style={style}>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg" alt="Rook"/>
     </div>
   );
 };

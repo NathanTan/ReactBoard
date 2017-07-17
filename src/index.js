@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Board from './Board';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import Position from './Position';
+import Position from './reducers/Position';
 
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 
@@ -11,7 +11,8 @@ const store = createStore(
   Position,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
-//render(<Board />, document.getElementById('root'));
+
+console.log("State" + JSON.stringify(store.getState()));
 
 //@ts-check
 render(

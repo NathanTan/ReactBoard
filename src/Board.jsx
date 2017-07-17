@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 //@ts-check
 class Board extends React.Component {
   state = {
-    name: 'x',
+    name: '',
+    position: {
+      fen: "",
+      objPos: {}
+    }
   };
 
   style = {

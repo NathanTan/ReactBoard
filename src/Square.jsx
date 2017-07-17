@@ -1,12 +1,25 @@
 import React from 'react';
 import Rook from './Rook';
+import Piece from './Piece';
+
+//@ts-check
 
 let Square = props => {
   let style = {
     display: "inline-block",
-    backgroundColor: props.squareColors
+    backgroundColor: props.squareColors,
+    "z-indx": -5
   }
-  return <div style={style}><Rook/> </div>
+  let onPieceClick = () => {
+    console.log("CLICKED");
+  }
+
+  return (
+  <div style={style} draggable="true">
+    <Piece /> 
+  </div>
+  )
+
 }
 
 export default Square
