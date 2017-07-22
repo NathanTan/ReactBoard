@@ -1,18 +1,23 @@
 import React from 'react';
 
 //No State, no class
-let Piece = () => {
+let Piece = (props) => {
   const style = {
     witdh: 50,
     height: 50,
     display: 'inline-block',
-    'z-index': 5
+    'zIndex': 5
   };
+
+  console.log("PIECE Props: " + JSON.stringify(props))
 
   return (
     <div style={style} draggable='true'>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg" alt="Rook" draggable="true"/>
-    </div>
+      { props.pieceType === "Rook" ? <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg" alt="Rook" draggable="true"/>
+                              : <img alt="Piece" draggable="true"/>    
+     }
+      
+      </div>
   );
 };
 

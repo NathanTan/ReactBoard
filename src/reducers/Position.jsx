@@ -42,6 +42,8 @@ const Position = (state = {}, action) => {
 
   switch (action.type) {
     case 'START':
+    console.log("MAPPING STATE")
+    console.log(state.position)
     return state.map(Position => {
       return {
         ...state,
@@ -88,11 +90,11 @@ const Position = (state = {}, action) => {
 
       }
     })
-      console.log(state.position)
-      break;
+      
+    case 'CREATE_BOARD':
+    return state  
     default: {
-      startPosition
-      break;
+      return startPosition
     }
   }
 };

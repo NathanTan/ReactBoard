@@ -1,12 +1,10 @@
 import React from 'react';
 import Square from './Square';
+import squareColors from './SquareColors';
+import { connect } from 'react-redux';
 
 //@ts-check
 let Row = props => {
-let squareColors = {
-    black: 'black',
-    white: '#00e600',
-  };
 
   return (
     <div>
@@ -61,4 +59,11 @@ let squareColors = {
   );
 };
 
-export default Row;
+function mapStateToProps(state){
+    return {
+        temp: "LOUD"
+    };
+}
+
+
+export default connect (mapStateToProps) (Row);
