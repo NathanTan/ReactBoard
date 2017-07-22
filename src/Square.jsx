@@ -25,7 +25,7 @@ class Square extends React.Component {
   }
 }
 
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
   return {
     boardPosition: state,
     pieceType: "Rook",

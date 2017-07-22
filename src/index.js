@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Position from './reducers/Position';
 
-// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-
 const store = createStore(
   Position,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

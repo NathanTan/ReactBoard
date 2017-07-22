@@ -61,7 +61,8 @@ let Row = props => {
 
 function mapStateToProps(state){
     return {
-        temp: "LOUD"
+        temp: "LOUD",
+        temp2: "quiet"
     };
 }
 
