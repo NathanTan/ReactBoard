@@ -10,16 +10,22 @@ class Square extends React.Component {
     "zIndex": -5
   }
 
+  position = this.props.squareColumn + this.props.squareRow
+
   onPieceClick = () => {
     console.log("CLICKED");
   console.log("Square Color: " + this.style.backgroundColor.toString())
   } 
 
   render() {
-    console.log("Square Props: " + JSON.stringify(this.props))
+    console.log("Square Props: " + JSON.stringify(this.props.state))
     return (
       <div style={this.style}>
-        <Piece pieceType="Rook"/>
+        <h2>{this.position}</h2>
+        if (this.position in this.props.state) 
+        {
+          <Piece pieceType={this.props.state[this.position.toString()]}/>
+        }
       </div>
     )
   }
