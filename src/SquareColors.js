@@ -2,6 +2,6 @@
 let squareColors = {
     black: 'black',
     white: '#00e600',
-  };
+};
 
 export default squareColors;
