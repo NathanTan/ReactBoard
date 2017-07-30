@@ -7,7 +7,10 @@ class Square extends React.Component {
     style = {
         display: "inline-block",
         backgroundColor: this.props.squareColors,
-        "zIndex": -5
+        "zIndex": -5,
+        width: "50px",
+        height: "50px",
+        
     }
 
     position = this.props.squareColumn + this.props.squareRow
