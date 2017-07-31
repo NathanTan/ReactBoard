@@ -8,8 +8,9 @@ class Square extends React.Component {
         display: "inline-block",
         backgroundColor: this.props.squareColors,
         "zIndex": -5,
-        width: "50px",
-        height: "50px",
+        width: "49px",
+        height: "49px",
+        //display: 'flex'
         
     }
 
