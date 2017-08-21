@@ -3,10 +3,11 @@
   "description": null,
   "version": "0.0.58",
   "dependencies": {
-    "redux": "3.7.2",
-    "react-redux": "5.0.5",
+    "chess": "^0.2.8",
+    "react": "15.5.3",
     "react-dom": "15.5.3",
-    "react": "15.5.3"
+    "react-redux": "5.0.5",
+    "redux": "3.7.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
