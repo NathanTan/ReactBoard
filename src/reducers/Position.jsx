@@ -81,7 +81,13 @@ const Position = (state = {}, action) => {
     })
       
     case 'CREATE_BOARD':
-    return state  
+       return state  
+
+    case 'MOVE':
+       console.log("MOVE THAT PIECE");
+      //  console.log(JSON
+      //  .stringify(action))
+
     default: {
       return startPosition
     }
