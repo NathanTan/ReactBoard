@@ -22,10 +22,9 @@ class Square extends React.Component {
     }
 
     render() {
-        //console.log("Trying to get boardPosition: " + JSON.stringify(this.props.boardPosition))
         return (
-            <div style={this.style}>
-                <Piece pieceType={this.props.boardPosition[this.position]} />
+            <div style={this.style} onClick={this.squareMove}>
+                <Piece pieceType={this.props.boardPosition[this.position]} currentSquare={this.position}/>
             </div>
         )
     }
