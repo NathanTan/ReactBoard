@@ -10,8 +10,6 @@ class Square extends React.Component {
         "zIndex": -5,
         width: "49px",
         height: "49px",
-        //display: 'flex'
-        
     }
 
     position = this.props.squareColumn + this.props.squareRow
@@ -33,28 +31,8 @@ class Square extends React.Component {
 //NOTE: mapStateToProps maps to the props for this component, not the child component.
 const mapStateToProps = (state) => {
     return {
-        boardPosition: createPositionObject(state.gameState.game.board.squares)
+        boardPosition: state.posObj
     };
 }
-
-//Creates the position object that is used to build the board
-const createPositionObject = (boardPosition) => {
-    let posObj = {}
-    for (let i = 0; i < 64; i++){
-        if (boardPosition[i].piece !== null){
-            //Create the piece type
-            let pieceType = (boardPosition[i].piece.side["name"] === "white") ? "w" : "b"
-            pieceType += boardPosition[i].piece.notation
-
-            //Get the square the piece in on
-            let square = boardPosition[i].file + boardPosition[i].rank            
-            
-            posObj[square] = pieceType
-        }
-    }
-    console.log(posObj)
-    return posObj
-}
-
 
 export default connect(mapStateToProps)(Square)

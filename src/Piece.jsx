@@ -80,7 +80,7 @@ const mapDispatchToProps = dispatch => {
         dispatch({
             type: 'MOVE',
             piece: piece,                                                                                                                                                                                                                                                                                                   
-            any: event,
+            event: event,
         });
       }
    }
