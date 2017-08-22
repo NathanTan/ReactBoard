@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import PieceImages from 'src/images/WhiteRook.svg';
 
 //No State, no class
 let Piece = (props) => {
@@ -23,7 +22,7 @@ let Piece = (props) => {
 
     const piece = () => {          
         switch(props.pieceType) {
-                case 'wP': content = <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg" 
+                case 'w': content = <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg" 
                 alt="Pawn" draggable="true" style={style} onDragStart={moveStart} data-current-square={props.currentSquare} />
                 break;
                 case 'wN': content = <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg" 
@@ -41,7 +40,7 @@ let Piece = (props) => {
                 case 'wK': content = <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg" 
                 alt="King" draggable="true" style={style} onDragStart={moveStart} data-current-square={props.currentSquare} />
                 break;
-                case 'bP': content = <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg" 
+                case 'b': content = <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg" 
                 alt="Pawn" draggable="true" style={style} onDragStart={moveStart} data-current-square={props.currentSquare} />
                 break;
                 case 'bN': content = <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg" 
