@@ -14,8 +14,6 @@ const Position = (state = {}, action) => {
     case 'MOVE':
        console.log("MOVE THAT PIECE");
        console.log(action.event.target);
-      //  console.log(JSON
-      //  .stringify(action))
       return state;
 
     default: {
