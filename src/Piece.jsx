@@ -13,8 +13,6 @@ let Piece = (props) => {
        props.draggingPiece('wP', event);
     };
 
-    console.log(JSON.stringify(props))
-
     let src = null;
     let alt = null;
     const piece = () => {          
@@ -88,20 +86,21 @@ let Piece = (props) => {
     piece()
 
     if(src === "")
-        return <div className="emptySquare"></div>
+        return <div className="emptySquare" data-current-square={props.currentSquare}></div>
     else
-        return <img src={src} alt={alt} draggable="true" style={style} onDragState={moveStart} data-current-square={props.currentSquare} />
+        return <img  src={src} alt={alt} draggable="true" style={style} onDragStart={moveStart} 
+         data-current-square={props.currentSquare} />
 };
 
 const mapDispatchToProps = dispatch => {
    return {
       draggingPiece: (piece, event) => {
         dispatch({
-            type: 'MOVE',
+            type: 'DRAG_START',
             piece: piece,                                                                                                                                                                                                                                                                                                   
             event: event,
         });
-      }
+      },
    }
 };
 

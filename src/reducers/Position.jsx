@@ -2,8 +2,12 @@ let chess = require('chess');
 
 const Position = (state = {}, action) => {
   let startPosition = {
-    gameState: new chess.create(),
-    fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
+    gameState: new chess.create({ PGN : true }),
+    fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
+    move: {
+      moveDestination: null,
+      moveSource: null
+    }
   };
   startPosition["posObj"] = createPositionObject(startPosition.gameState.game.board.squares)
 
@@ -11,10 +15,20 @@ const Position = (state = {}, action) => {
     case 'CREATE_BOARD':
        return state;
 
-    case 'MOVE':
-       console.log("MOVE THAT PIECE");
-       console.log(action.event.target);
-      return state;
+    case 'DRAG_END':
+       console.log("Drag end");       
+
+       console.log(action.dropSquare)
+      let newState = {
+        ...state, 
+        move: {moveDestination: action.dropSquare } 
+    };
+    console.log(newState)
+    newState.gameState.move(action.dropSquare)
+    newState.posObj = createPositionObject(newState.gameState.game.board.squares)
+      console.log(newState)
+
+       return newState ;
 
     default: {
     console.log("Returning default state")

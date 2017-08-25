@@ -19,9 +19,20 @@ class Square extends React.Component {
         console.log("Square Color: " + this.style.backgroundColor.toString())
     }
 
+    drop = ev => {
+        ev.preventDefault();
+        console.log("Move Destination: " + ev.target.children[0].getAttribute("data-current-square"))
+        this.props.dragPieceFinish(ev.target.children[0].getAttribute("data-current-square"))
+    }
+
+    allowDrop = event => {
+        event.preventDefault();
+        return false;
+    }
+
     render() {
         return (
-            <div style={this.style} onClick={this.squareMove}>
+            <div style={this.style} onClick={this.squareMove} onDragOver={this.allowDrop} onDrop={this.drop}>
                 <Piece pieceType={this.props.boardPosition[this.position]} currentSquare={this.position}/>
             </div>
         )
@@ -35,4 +46,15 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(Square)
+const mapDispatchToProps = dispatch => {
+    return {
+        dragPieceFinish: (dropSquare) => {
+            dispatch({
+                  type: 'DRAG_END',
+                  dropSquare,
+            })
+          }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Square)
