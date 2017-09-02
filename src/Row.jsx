@@ -4,7 +4,7 @@ import squareColors from './SquareColors';
 import { connect } from 'react-redux';
 
 //@ts-check
-let Row = props => {
+const Row = props => {
 
   return (
     <div>
@@ -61,11 +61,9 @@ let Row = props => {
 
 function mapStateToProps(state){
     return {
-        temp: "LOUD",
-        temp2: "quiet",
         state: state,
     };
 }
 
 
-export default connect (mapStateToProps) (Row);
+export default connect (mapStateToProps)(Row);
