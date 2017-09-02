@@ -21,7 +21,18 @@ class Square extends React.Component {
 
    drop = ev => {
       ev.preventDefault();
-      this.props.dragPieceFinish(ev.target.children[0].getAttribute("data-current-square"))
+      let capture = false
+	 console.log(ev.target.nodeName + " " + ev.target)
+	 // console.log(ev.target.children[0].hasAttribute("class"))
+	 //if (ev.target.children[0].hasAttribute("class"))
+	 if (ev.target.nodeName === "IMG")
+	    capture = true
+	       console.log("Capture: " + capture)
+	       if (capture)
+		  this.props.dragPieceFinish(ev.target.getAttribute("data-current-square"), capture)
+	       else
+		  this.props.dragPieceFinish(ev.target.children[0].getAttribute("data-current-square"), capture)
+
    }
 
    allowDrop = event => {
@@ -47,10 +58,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      dragPieceFinish: (dropSquare) => {
+      dragPieceFinish: (dropSquare, capture) => {
 	 dispatch({
 	    type: 'DRAG_END',
 	 dropSquare,
+	 capture,
 	 })
       }
    }

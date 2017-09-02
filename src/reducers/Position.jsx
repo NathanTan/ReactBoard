@@ -5,12 +5,13 @@ const Position = (state = {}, action) => {
       gameState: new chess.create({ PGN : true }),
       fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
       move: {
-        capture: false,
-        castle: null,
-        pieceType: null,
-        pieceColor: null,
-        moveDestination: null,
-        moveSource: null
+	 capture: false,
+	 castle: null,
+	 pieceType: null,
+	 pieceColor: null,
+	 promotion: false,
+	 moveDestination: null,
+	 moveSource: null
       }
    };
    startPosition["posObj"] = createPositionObject(startPosition.gameState.game.board.squares)
@@ -21,12 +22,12 @@ const Position = (state = {}, action) => {
 
 	 case 'DRAG_START': {
 	    console.log('Drag start')
-         return {...state, move: 
-            {
-		          moveSource: action.moveSource,
-		          pieceType: action.pieceType,
-		          pieceColor: action.pieceColor
-	          }
+	       return {...state, move: 
+		  {
+		     moveSource: action.moveSource,
+			pieceType: action.pieceType,
+			pieceColor: action.pieceColor
+		  }
 	       };
 	 }
 
@@ -45,12 +46,13 @@ const Position = (state = {}, action) => {
 				  move: 
 				  {
 				     moveDestination: action.dropSquare,
-				     moveSource: source 
+				     moveSource: source,
+				     capture: action.capture,
 				  } 
 			       };
 
 
-			    let move = createMove(pieceType, newState.move.moveDestination)
+			    let move = createMove(pieceType, newState.move.moveDestination, newState.move.capture, source)
 			       console.log("Move: " + move)
 			       newState.gameState.move(move)
 			       newState.posObj = createPositionObject(newState.gameState.game.board.squares)
@@ -70,8 +72,8 @@ const createPositionObject = (boardPosition) => {
    let posObj = {}
    for (let i = 0; i < 64; i++){
       if (boardPosition[i].piece !== null){
-  	 //Create the piece type
-	   let pieceType = (boardPosition[i].piece.side["name"] === "white") ? "w" : "b"
+	 //Create the piece type
+	 let pieceType = (boardPosition[i].piece.side["name"] === "white") ? "w" : "b"
 	    pieceType += boardPosition[i].piece.notation
 
 	    //Get the square the piece in on
@@ -83,13 +85,26 @@ const createPositionObject = (boardPosition) => {
    return posObj
 }
 
-const createMove= (pieceType, moveDest) => {
-   if(pieceType === "P"){
-      return moveDest
+const createMove = (pieceType, moveDest, capture, source) => {
+   if (pieceType === "P") { 
+      console.log("Piece Type: " + pieceType)
+
+	 if (capture === false){
+
+	    console.log("Move Dest: " + moveDest)
+	       return moveDest
+	 }
+	 else
+	    //            File     capture  location
+	    return source.charAt(0) + "x" + moveDest 
    }
 
    else{
-      return pieceType + moveDest
+      console.log("capture: " + capture)
+	 if (capture === false)
+	    return pieceType + moveDest
+	 else 
+	    return pieceType + "x" + moveDest
    }
 }
 
