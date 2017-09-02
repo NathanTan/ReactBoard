@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from './Row';
+import PromotionModal from './PromotionModal';
 
 //@ts-check
 class Board extends React.Component {
@@ -10,6 +11,7 @@ class Board extends React.Component {
   //Row indicated here, column indicated in Row.js
   render() {
     return (
+      <div>
       <div style={this.style}>
         <Row startSquare="white" squareRow="8"/>
         <Row startSquare="black" squareRow="7" />
@@ -19,6 +21,8 @@ class Board extends React.Component {
         <Row startSquare="black" squareRow="3" />
         <Row startSquare="white" squareRow="2"/>
         <Row startSquare="black" squareRow="1" />
+      </div>
+      <PromotionModal />
       </div>
     );
   }

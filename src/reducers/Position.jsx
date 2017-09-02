@@ -24,11 +24,11 @@ const Position = (state = {}, action) => {
 			console.log('Drag start')
 			return {
 				...state, move:
-					{
-						source: action.moveSource,
-						pieceType: action.pieceType,
-						pieceColor: action.pieceColor
-					}
+				{
+					source: action.moveSource,
+					pieceType: action.pieceType,
+					pieceColor: action.pieceColor
+				}
 			};
 		}
 
@@ -53,20 +53,24 @@ const Position = (state = {}, action) => {
 				}
 			};
 
-			//Check to make sure a non-capturing pawn is moving in its own column.
-			if ( action.capture === false && pieceType === "P" && source.charAt(0) !== action.dropSquare.charAt(0))
-				executeMove = false
+			if (pieceType === "P") {
+				//Check to make sure a non-capturing pawn is moving in its own column.
+				if (action.capture === false && source.charAt(0) !== action.dropSquare.charAt(0))
+					executeMove = false
 
-			if (executeMove) 
-			{
+				if (action.dropSquare.charAt(1) === "1" || action.dropSquare.charAt(1) === "8") {
+					//Show modal for promotion
+				}
+			}
+
+			if (executeMove) {
 				let move = createMove(pieceType, newState.move.destination, newState.move.capture, source)
 				console.log("Move: " + move)
 				newState.gameState.move(move)
 				newState.posObj = createPositionObject(newState.gameState.game.board.squares)
 			}
 
-			else
-			{
+			else {
 				console.log("No move executed")
 			}
 
