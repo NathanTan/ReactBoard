@@ -5,12 +5,11 @@ import SquareColors from './SquareColors';
 
 
 const PromotionModal = () => {
-
     return <div>
-        <Square SquareColors={SquareColors.black} squareRow="" squareColumn="" />
-        <Square SquareColors={SquareColors.white} squareRow="" squareColumn="" />
-        <Square SquareColors={SquareColors.black} squareRow="" squareColumn="" />
-        <Square SquareColors={SquareColors.white} squareRow="" squareColumn="" />
+        <Square squareColors={SquareColors.black} fixedPiece="true" squareRow="Q" squareColumn="" />
+        <Square squareColors={SquareColors.white} fixedPiece="true" squareRow="B" squareColumn="" />
+        <Square squareColors={SquareColors.black} fixedPiece="true" squareRow="K" squareColumn="" />
+        <Square squareColors={SquareColors.white} fixedPiece="true" squareRow="R" squareColumn="" />
     </div>
 }
 

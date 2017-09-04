@@ -1,5 +1,8 @@
 let chess = require('chess');
 
+
+//TODO: Fix to allow for en passant
+
 const Position = (state = {}, action) => {
 	let startPosition = {
 		gameState: new chess.create({ PGN: true }),
@@ -12,15 +15,18 @@ const Position = (state = {}, action) => {
 			promotion: false,
 			destination: null,
 			source: null
-		}
+		},
+		WhiteToMove: true
+
 	};
 	startPosition["posObj"] = createPositionObject(startPosition.gameState.game.board.squares)
 
+	console.log(startPosition.gameState.game)
 	switch (action.type) {
 		case 'CREATE_BOARD':
 			return state;
 
-		case 'DRAG_START': {
+		case 'DRAG_START':
 			console.log('Drag start')
 			return {
 				...state, move:
@@ -30,7 +36,6 @@ const Position = (state = {}, action) => {
 					pieceColor: action.pieceColor
 				}
 			};
-		}
 
 		case 'DRAG_END':
 			console.log("Drag end");
@@ -68,6 +73,7 @@ const Position = (state = {}, action) => {
 				console.log("Move: " + move)
 				newState.gameState.move(move)
 				newState.posObj = createPositionObject(newState.gameState.game.board.squares)
+				newState.WhiteToMove = !newState.WhiteToMove
 			}
 
 			else {
@@ -99,6 +105,22 @@ const createPositionObject = (boardPosition) => {
 			posObj[square] = pieceType
 		}
 	}
+
+	posObj["PromotionPieces"] = {
+		"white": {
+			"Queen": "wQ",
+			"Bishop": "wB",
+			"Knight": "wN",
+			"Rook": "wR"
+		},
+		"black": {
+			"Queen": "bQ",
+			"Bishop": "bB",
+			"Knight": "bN",
+			"Rook": "bR"
+		}
+	}
+	
 	return posObj
 }
 
