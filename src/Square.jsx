@@ -73,7 +73,7 @@ class Square extends React.Component {
 
         return (
             <div style={this.style} onClick={this.squareMove} onDragOver={this.allowDrop} onDrop={this.drop}>
-                <Piece pieceType={this.pieceType} currentSquare={this.position} pieceWidth={this.pieceWidth} pieceHeight={this.pieceHeight} />
+                <Piece key={this.position + this.pieceType} pieceType={this.pieceType} currentSquare={this.position} pieceWidth={this.pieceWidth} pieceHeight={this.pieceHeight} />
             </div>
         )
     }
