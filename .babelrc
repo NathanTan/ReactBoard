@@ -1,6 +1,8 @@
 { 
     "presets": ["es2015", "react"],
     "plugins": [
-        "transform-react-constant-elements"
+        "transform-react-constant-elements",
+        "transform-object-rest-spread",
+        "transform-class-properties"
     ]
  }
