@@ -28,6 +28,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "webpack": "node_modules/.bin/webpack",
-    "server": "node ./src/server.js"
+    "server": "node ./public/server.js"
   }
 }
